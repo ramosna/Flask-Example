@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+<!--Header-->
+    <header role="navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Job Tracker</span>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('get_jobs')}}">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('get_contacts')}}">Contacts</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('get_skills') }}">Skills</a>
+                      </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                <span class="navbar-brand mb-0 h1">
+                    Welcome {{ username }}
+                  </span>            
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-5">
+
+        <figure class="text-center">
+            <h1>Welcome to the Job Tracker!</h1>
+        </figure>
+
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">
+                    <figure class="text-center">
+                        <h4>Add a Job</h5>
+                    </figure>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Through our Jobs portal, you can add as many jobs as you want using our intuitive Add Job forms. Our forms are the best in the biz.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">
+                    <figure class="text-center">
+                        <h4>Track your Jobs</h5>
+                    </figure>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Track your jobs to your hearts content. Edit the statuses of your jobs to match reality and delete them when the inevitable rejection comes.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">
+                    <figure class="text-center">
+                        <h4>Get your contacts</h5>
+                    </figure>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Collect recuiters from your job search until they reject you if you're lucky, or mostly like ghost you at a moment's notice.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card-header">
+                    <figure class="text-center">
+                        <h4>Match your Skills</h5>
+                    </figure>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Match up your skillset for the perfect pairing, or just get half of them or something. Meritocracy is a lie anyways. You do you.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+</body>
+</html>

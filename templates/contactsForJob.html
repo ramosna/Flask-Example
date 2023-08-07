@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Contacts</title>
+</head>
+<body>
+    <!--Header-->
+    <header role="navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Job Tracker</span>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('add_contact') }}">Add Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('get_jobs') }}">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('get_skills') }}">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+       <!--Display Contacts in a table-->
+    <div class="container my-5">
+        <h1>{{job.company}} Contacts</h1>
+        <div class="table-responsive-sm mt-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Name</th>
+                    <th>Company</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+            {% for contact in results %}
+            <tr>
+                <td>{{contact.name}}</td>
+                <td>{{contact.company}}</td>
+                <td>{{contact.email}}</td>
+                <td>{{contact.phone}}</td>
+                <td><a style="vertical-align: middle;" role="button" class="btn btn-outline-dark btn-sm"   href="/contacts/{{contact._id}}">View</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+        <div class="container-fluid">
+        <a role="button" class="btn btn-outline-dark" href="/jobs/contacts/{{job._id}}/">Connect A Contact</a>
+    </div>
+    </div>
+</body>
+</html>

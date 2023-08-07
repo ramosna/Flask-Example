@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Add Skills</title>
+</head>
+<body>
+    <!--Header-->
+    <header role="navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Job Tracker</span>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('get_jobs')}}">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('get_contacts') }}">Contacts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+        <!--Display Jobs in a table-->
+    <div class="container mt-5">
+        <h1>Skills and Comfort Level</h1>
+        <div class="table-responsive-sm mt-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Skill</th>
+                    <th>Comfort Level</th>
+                    <th>Jobs With Skill</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for x in results %}
+                <tr>
+                    <td>{{x.skill}}</td>
+                    <td>{{x.comfort}}</td>
+                    <td>{{function(x.skill)}}</td>
+                    <td><a style="vertical-align: middle;" role="button" class="btn btn-outline-danger btn-sm" href="/skills/delete/{{x._id}}">DELETE</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+       <!--Add a new skill form-->
+       <!-- <div class="container-sm mt-5">
+        <div class="row justify-content-center">
+            <div class="col mx-auto">
+                <div class="card border-dark mt-3">
+                    <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="skill">Skill</label>
+                            <input type="text" class="form-control" id="skill" name="skill" placeholder="Enter Skill Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="comfort">Comfort Level</label>
+                                <select class="form-control" id="comfort" name="comfort">
+                                    <option>Never Used</option>
+                                    <option>Beginner</option>
+                                    <option>Intermediate</option>
+                                    <option>Advanced</option>
+                                </select>
+                            </div>
+                        <button type="submit" class="btn btn-primary mt-3">Add Skill</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col mx-auto">
+                <div class="card border-dark mt-3">
+                    <div class="card-body">
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="skill">Skill</label>
+                            <input type="text" class="form-control" id="skill" name="skill" placeholder="Enter Skill Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="comfort">Comfort Level</label>
+                                <select class="form-control" id="comfort" name="comfort">
+                                    <option>Never Used</option>
+                                    <option>Beginner</option>
+                                    <option>Intermediate</option>
+                                    <option>Advanced</option>
+                                </select>
+                            </div>
+                        <button type="submit" class="btn btn-primary mt-3">Add Skill</button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

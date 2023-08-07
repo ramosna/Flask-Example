@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+<!--Header-->
+    <header role="navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Job Tracker</span>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('get_jobs')}}">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('get_contacts')}}">Contacts</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('get_skills') }}">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Body and elements-->
+<div class="container container-md mt-2">
+<h1>Job Information</h1>
+  <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Company Name</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{job.company}}
+        </h6>
+      </div>
+    </div>
+  <div class="row mt-3">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Position</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{job.position}}
+        </h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Date Applied</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{job.date}}
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Status</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{job.status}}
+        </h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Skills</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <!-- https://stackoverflow.com/questions/11974318/how-to-output-a-comma-delimited-list-in-jinja-python-template -->
+          {{ job.skills|join(', ') }}
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="row">
+        <div class="col">
+      <div class="container-fluid mt-3 mb-4">
+        <a role="button" class="btn btn-outline-dark" href="/jobs">Jobs</a>
+          <a role="button" class="btn btn-outline-dark" href="/jobs/{{job._id}}/contacts/">View Contacts</a>
+        <a role="button" class="btn btn-outline-warning" href="/jobs/edit/{{job._id}}">Edit</a>
+      </div>
+    </div>
+    <div class="col">
+        <div class="container-fluid mt-3 text-right">
+            <a role="button" class="btn btn-outline-danger" href="/delete/jobs/{{job._id}}">Delete Job</a>
+      </div>
+    </div>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+<!--Header-->
+    <header role="navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Job Tracker</span>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('get_jobs')}}">Jobs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('get_contacts')}}">Contacts</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ url_for('get_skills') }}">Skills</a>
+                      </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user_logout') }}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!--Body and elements-->
+<div class="container container-md mt-2">
+<h1>Contact Information</h1>
+    <div class="row mt-3">
+  <div class="col-sm-6">
+  <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Name</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{contact.name}}
+        </h6>
+      </div>
+    </div>
+        </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Company</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{contact.company}}
+        </h6>
+      </div>
+    </div>
+  </div>
+    </div>
+    <div class="row mt-3">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Email</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{contact.email}}
+        </h6>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Phone</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+            {{contact.phone}}
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="row">
+        <div class="col">
+          <div class="container-fluid mt-3">
+            <a role="button" class="btn btn-outline-dark" href="/contacts">Contacts</a>
+              <a role="button" class="btn btn-outline-warning" href="/contacts/edit/{{contact._id}}">Edit</a>
+          </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="container-fluid mt-3 text-right">
+                {% if contact.job %}
+                <a role="button" class="btn btn-outline-danger" href="/contacts/disconnect/{{contact._id}}/{{contact.job}}">Disconnect From Job</a>
+                {% else %}
+                <a role="button" class="btn btn-outline-dark" href="/contacts/jobs/{{contact._id}}">Connect To Job</a>
+                {% endif %}
+                    <a role="button" class="btn btn-outline-danger" href="/delete/contacts/{{contact._id}}">Delete Contact</a>
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

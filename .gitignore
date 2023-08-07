@@ -1,0 +1,5 @@
+# Miguel .gitignore files
+venv/
+__pycache__/
+
+test_insert.py
